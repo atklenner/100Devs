@@ -1,0 +1,112 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+  font-family: sans-serif;
+}
+
+.box {
+  border: 2px solid black;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header {
+  background-color: black;
+  color: white;
+}
+
+header > * {
+  display: inline-block;
+}
+
+.signin {
+  width: 200px;
+  border-left: 1px solid lightgray;
+}
+
+a {
+  color: white;
+}
+
+input {
+  float: right;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  border-right: 1px solid lightgray;
+  padding: 0.5em 1em;
+}
+
+input {
+  padding: 0;
+  border: 0;
+}
+
+.welcome {
+  display: inline-block;
+  /* margin-right: auto; */
+}
+
+.date {
+  /* margin-left: auto; */
+  float: right;
+  margin-top: 1em;
+  color: gray;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+main,
+aside {
+  float: left;
+  width: 48%;
+  margin: 0.5%;
+  height: 300px;
+}
+
+.side {
+  width: 49%;
+  float: left;
+  height: 48%;
+  margin: 0.5%;
+}
+
+.second {
+  float: left;
+  width: 33.3333%;
+  height: 250px;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
