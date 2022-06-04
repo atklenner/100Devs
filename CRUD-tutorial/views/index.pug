@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+  h1 Hello There
+  form(action="/quotes", method="post") 
+    input#name(type="text", name="name", placeholder="name")
+    input#quote(type="text", name="quote", placeholder="quote")
+    button(type="submit") Submit

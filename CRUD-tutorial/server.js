@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 
+app.set("view engine", "pug");
+
 MongoClient.connect(process.env.CONNECTION_STRING)
   .then((client) => {
     console.log("Connected to Database");
@@ -15,10 +17,9 @@ MongoClient.connect(process.env.CONNECTION_STRING)
         .find()
         .toArray()
         .then((results) => {
-          console.log(results);
+          res.render("index", { results });
         })
         .catch((err) => console.error(err));
-      res.sendFile(__dirname + "/index.html");
     });
 
     app.post("/quotes", (req, res) => {
