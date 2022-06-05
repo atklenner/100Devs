@@ -1,24 +1,27 @@
 extends layout.pug
 
 block content
-  h1 Hello There
-  form(action="/quotes", method="post") 
-    input#name(type="text", name="name", placeholder="name")
-    input#quote(type="text", name="quote", placeholder="quote")
-    button(type="submit") Submit
-  h1 Quotes
-  ul
-    each quote in results
-      li
-        span= quote.name + ": "
-        span= quote.quote
-  div
-    h1 Darth Vader Invades!
-    p Replace the Yoda quote with a quote by Darth Vader
-    button#update-button Replace Quote
-  div
-    h1 Remove Darth Vader
-    p Delete all the Darth Vader quotes.
-    button#delete-button Delete Quotes
-  div#message
+  div.top
+    section
+      h1 Hello There
+      form(action="/quotes", method="post") 
+        input#name(type="text", name="name", placeholder="name")
+        input#quote(type="text", name="quote", placeholder="quote")
+        button(type="submit") Submit
+    section
+      h1 Darth Vader Invades!
+      p Replace the Yoda quote with a quote by Darth Vader
+      button#update-button Replace Quote
+    section
+      h1 Remove Darth Vader
+      p Delete all the Darth Vader quotes.
+      button#delete-button Delete Quotes
+  section 
+    h1 Quotes
+    ul
+      each quote in results
+        li
+          span= quote.name + ": "
+          span= quote.quote
+    div#message
   script(src="/main.js") 
