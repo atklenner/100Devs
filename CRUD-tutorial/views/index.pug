@@ -6,12 +6,19 @@ block content
     input#name(type="text", name="name", placeholder="name")
     input#quote(type="text", name="quote", placeholder="quote")
     button(type="submit") Submit
+  h1 Quotes
   ul
     each quote in results
       li
         span= quote.name + ": "
         span= quote.quote
-  h1 Darth Vader Invades!
-  p Replace the Yoda quote with a quote by Darth Vader
-  button#update-button Replace Quote
+  div
+    h1 Darth Vader Invades!
+    p Replace the Yoda quote with a quote by Darth Vader
+    button#update-button Replace Quote
+  div
+    h1 Remove Darth Vader
+    p Delete all the Darth Vader quotes.
+    button#delete-button Delete Quotes
+  div#message
   script(src="/main.js") 
