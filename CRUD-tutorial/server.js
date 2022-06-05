@@ -5,6 +5,9 @@ const app = express();
 const MongoClient = require("mongodb").MongoClient;
 
 app.set("view engine", "pug");
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 MongoClient.connect(process.env.CONNECTION_STRING)
   .then((client) => {
@@ -30,11 +33,22 @@ MongoClient.connect(process.env.CONNECTION_STRING)
         })
         .catch((err) => console.error(err));
     });
+
+    app.put("/quotes", (req, res) => {
+      quotesCollection
+        .findOneAndUpdate(
+          { name: "Yoda" },
+          { $set: { name: req.body.name, quote: req.body.quote } },
+          { upsert: true }
+        )
+        .then((result) => {
+          res.json("Success");
+        })
+        .catch((err) => console.error(err));
+    });
   })
   .catch((err) => {
     console.error(err);
   });
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, () => console.log("listening on port 3000"));
