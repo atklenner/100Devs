@@ -13,7 +13,17 @@ function filter(arr) {
     return title.length % 5 !== 0;
   });
   titles = titles.filter((title) => {
-    return (title.charCodeAt(0) + title.charCodeAt(title.length - 1)) % 2 === 0;
+    return (title.charCodeAt(0) + title.charCodeAt(title.length - 1)) % 2 !== 0;
+  });
+  titles = titles.filter((title) => {
+    return title[Math.ceil(title.length / 2)] !== "e";
+  });
+  titles = titles.filter((title) => {
+    return (
+      title.match(/[a-z]/g).length % 2 === 0 &&
+      title.match(/[A-Z]/g).length >= 2 &&
+      !title.match(/S/)
+    );
   });
   return titles;
 }
