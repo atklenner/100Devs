@@ -24,6 +24,11 @@ const cipher = {
   q: "9",
 };
 
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const tebahpla = "zyxwvutsrqponmlkjihgfedcba";
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const TEBAHPLA = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
 function translateString(str) {
   // Day 1
   let calculatorCode = str.split("").reduce((acc, cur) => {
@@ -33,32 +38,49 @@ function translateString(str) {
       return acc + cur;
     }
   }, "");
-  // Day 2
-  function transformString(str) {
-    let index = str.indexOf("c");
-    let undoCatMangle = str.slice(index + 1);
-    let undoEek = undoCatMangle.replace(/Eek!/g, "");
-    return undoEek.split("").reverse().join("");
-  }
-  let undoCatDamage = transformString(calculatorCode);
 
-  // function transformFurther(str) {
-  //   return str
-  //     .split("v")
-  //     .slice(1)
-  //     .reduce((acc, cur) => acc + cur[0], "");
-  // }
+  // Day 2
+  // The clue was "Space"
+
   // Day 3
   function removeChars(str) {
     return str.replace(/[Space]/g, " ");
   }
-  let giveMeSomeSpace = removeChars(undoCatDamage);
+  let giveMeSomeSpace = removeChars(calculatorCode);
 
   // Day 4
   function reverseString(str) {
     return str.split("").reverse().join("");
   }
-  return reverseString(giveMeSomeSpace);
+  let gnirts = reverseString(giveMeSomeSpace);
+
+  // Day 5
+  // The number was "3"
+
+  // Day 6
+  function removeLetters(str, value) {
+    return str.split("").reduce((acc, cur, index) => {
+      if ((index + 1) % value == 0) return acc + "";
+      return acc + cur;
+    }, "");
+  }
+
+  let lettersRemoved = removeLetters(gnirts, 3);
+
+  // Day 7
+  function letterSwap(str) {
+    return str.split("").reduce((acc, cur) => {
+      if (alphabet.includes(cur)) {
+        return acc + TEBAHPLA[alphabet.indexOf(cur)];
+      } else if (ALPHABET.includes(cur)) {
+        return acc + tebahpla[ALPHABET.indexOf(cur)];
+      } else {
+        return acc + cur;
+      }
+    }, "");
+  }
+
+  return letterSwap(lettersRemoved);
 }
 
 console.log(translateString(twitterString));
