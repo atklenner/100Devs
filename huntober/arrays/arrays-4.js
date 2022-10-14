@@ -34,12 +34,14 @@ function moveUp(value, arr) {
 }
 
 function moveDown(value, arr) {
+  let moved = false;
   arr.forEach((row, index) => {
-    if (row.includes(value) && index < arr.length - 1) {
+    if (row.includes(value) && index < arr.length - 1 && !moved) {
       let column = row.indexOf(value);
       let valueToBeSwapped = arr[index + 1][column];
       arr[index][column] = valueToBeSwapped;
       arr[index + 1][column] = value;
+      moved = true;
     }
   });
   return arr;
@@ -54,4 +56,6 @@ console.log(myGrid);
 moveDown("f", myGrid);
 console.log(myGrid);
 moveDown("f", myGrid);
+console.log(myGrid);
+moveDown("a", myGrid);
 console.log(myGrid);
