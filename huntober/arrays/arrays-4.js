@@ -30,6 +30,7 @@ function moveUp(value, arr) {
       arr[index - 1][column] = value;
     }
   });
+  return arr;
 }
 
 function moveDown(value, arr) {
@@ -41,6 +42,7 @@ function moveDown(value, arr) {
       arr[index + 1][column] = value;
     }
   });
+  return arr;
 }
 
 moveUp("h", myGrid);
